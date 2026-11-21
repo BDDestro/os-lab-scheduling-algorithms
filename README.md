@@ -50,36 +50,7 @@ The programs print `CT`, `TAT`, and `WT` for each process, then the averages.
 └── examples/            # output produced by the sample inputs
 ```
 
-## Compile and run
 
-### Windows (MinGW / GCC)
-
-```bat
-build.bat
-bin\fcfs.exe < samples\fcfs.txt
-bin\sjf.exe < samples\sjf.txt
-bin\srtf.exe < samples\srtf.txt
-bin\round_robin.exe < samples\round_robin.txt
-bin\priority.exe < samples\priority.txt
-```
-
-### Linux / macOS
-
-```bash
-make
-./bin/fcfs < samples/fcfs.txt
-./bin/sjf < samples/sjf.txt
-./bin/srtf < samples/srtf.txt
-./bin/round_robin < samples/round_robin.txt
-./bin/priority < samples/priority.txt
-```
-
-Or compile a single file directly:
-
-```bash
-gcc -std=c99 -Wall -Wextra fcfs.c -o fcfs
-./fcfs
-```
 
 ## Sample input
 
@@ -253,32 +224,6 @@ Gantt chart for the sample:
 | P1 | P2 | P4 | P3 | P5 |
 0    4    7    9    10   15
 ```
-
-## Questions a teacher may ask
-
-1. **What is the difference between TAT and WT?**
-   TAT is the total time from arrival to completion; WT is the time spent waiting
-   in the ready queue (TAT minus burst time).
-
-2. **Why does SJF give the minimum average waiting time?**
-   Running the shortest job first prevents short jobs from waiting behind long
-   ones, so the total waiting time is minimized.
-
-3. **What is the difference between SJF and SRTF?**
-   SJF is non-preemptive; SRTF is preemptive and compares remaining times.
-
-4. **What happens if the Round Robin quantum is too small or too large?**
-   Too small: too many context switches and overhead. Too large: it behaves like
-   FCFS and loses fairness.
-
-5. **What is starvation, and which algorithms can cause it?**
-   A process waits forever because higher-priority or shorter jobs keep arriving.
-   Priority scheduling and SJF/SRTF can starve long jobs. Aging fixes priority
-   starvation.
-
-6. **Why is FCFS not ideal for time-sharing systems?**
-   A long process can block the CPU and create the convoy effect, so response
-   time becomes poor.
 
 ## Notes
 
